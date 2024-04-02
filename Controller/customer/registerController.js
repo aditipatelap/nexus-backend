@@ -31,8 +31,8 @@ const handleRegisterCustomer = async (req, res) => {
         }
 
         await customerCollection.insertMany([newCustomer])
-        const CustomerDetails = await customerCollection.findOne({ email: body.email })
-        res.json({ status: "added", user: CustomerDetails });
+        const customerDetails = await customerCollection.findOne({ email: body.email })
+        res.json({ status: "added", user: customerDetails });
     }
     catch (e) {
         console.error(e);

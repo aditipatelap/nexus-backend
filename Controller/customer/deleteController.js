@@ -2,7 +2,6 @@ const customerCollection = require('../../models/customerModel');
 
 const handleDeleteCustomer = async (req, res) => {
     const { email } = req.body;
-    console.log(email);
 
     try {
         const foundCustomer = await customerCollection.findOne({ email: email })

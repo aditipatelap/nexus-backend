@@ -19,14 +19,15 @@ app.use(logger);
 app.use(cors(corsOptions));
 
 // built-in middleware to handle urlencoded form data
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false, limit: '50mb'}));
 
-// built-in middleware for json 
-app.use(express.json());
+// built-in middleware for json
+app.use(express.json({limit: '50mb'}));
 
 //routes
 app.use('/customer', require('./Routes/customerRoute'));
-// app.use('/seller', require('./Routes/sellerRoute'));
+app.use('/seller', require('./Routes/sellerRoute'));
+app.use('/product', require('./Routes/productRoute'));
 
 // error handler: if error occurs then it will be logged in error handler log file.
 app.use(errorHandler);
