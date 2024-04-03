@@ -6,7 +6,6 @@ const handleGetAllProducts = async (req, res) => {
 
         if(products){
             res.json({ status: "success", products: products });
-            console.log("sent");
         }
         else {
             res.json({ status: "No product found" })
