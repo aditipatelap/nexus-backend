@@ -22,6 +22,7 @@ const handleCreateOrder = async (req, res) => {
             billName: body.billName,
             billPhone: body.billPhone,
             billAddress: body.billAddress,
+            shipAddress: body.shipAddress,
         }
         
         await orderCollection.insertMany([newOrder]);

@@ -52,6 +52,10 @@ const orderSchema = new mongoose.Schema({
             type: String,
             required: true,
         },
+        shipAddress: {
+            type: String,
+            required: true,
+        },
     },
 
     // timestamps: true is an option that tells Mongoose to automatically add two fields to your schema: 

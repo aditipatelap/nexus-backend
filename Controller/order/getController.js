@@ -30,6 +30,7 @@ const handleGetOrder = async (req, res) => {
                         billName: order.billName,
                         billPone: order.billPhone,
                         billAddress: order.billAddress,
+                        shipAddress: order.shipAddress,
                         createdAt: order.createdAt,
                         productIdList: productIdList,
                         productNameList: productNameList,
