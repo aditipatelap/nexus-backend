@@ -52,8 +52,10 @@ const handleSendMail = async (customerId, productName, update) => {
                         <body class="email-body">
                             <div class="email-heading">Dear Customer,</div>
                             <div class="email-text">
-                                Your order with product <strong>${productName}</strong> has been approved.<br><br>
-                                Thank you for shopping with us!<br><br>
+                                Congratulations!<br>
+                                Your order with product <strong>${productName}</strong> has been approved and is now out for delivery.<br>
+                                Our delivery agent will be arriving shortly with your package. Upon delivery, you will receive your invoice via e-mail.<br><br>
+                                Thank you for shopping with us! We truly appreciate your trust and support.<br><br>
                                 <span class="email-signature">Best regards,<br>Team Nexus</span>
                             </div>
                         </body>
@@ -94,7 +96,7 @@ const handleSendMail = async (customerId, productName, update) => {
                         <body class="email-body">
                             <div class="email-heading">Dear Customer,</div>
                             <div class="email-text">
-                                We regret to inform you that your order with product <strong>${productName}</strong> has been rejected.<br><br>
+                                We regret to inform you that your order with product <strong>${productName}</strong> has been rejected by the seller.<br><br>
                                 Please feel free to contact us for further assistance.<br><br>
                                 <span class="email-signature">Best regards,<br>Team Nexus</span>
                             </div>
@@ -136,7 +138,9 @@ const handleSendMail = async (customerId, productName, update) => {
                         <body class="email-body">
                             <div class="email-heading">Dear Customer,</div>
                             <div class="email-text">
-                                Your order with product <strong>${productName}</strong> has been delivered.<br><br>
+                                Congratulations!<br>
+                                Your order with product <strong>${productName}</strong> has been delivered.<br>
+                                Additionally, we have attached the invoice here for your reference.<br><br>
                                 We hope you enjoy your purchase!<br><br>
                                 <span class="email-signature">Best regards,<br>Team Nexus</span>
                             </div>
