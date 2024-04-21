@@ -29,7 +29,7 @@ const handleUpdateOrder = async (req, res) => {
         res.json({ status: "updated" });
 
         // send mail notification
-        mailController.handleSendMail(order.customerId, productName, body.action)
+        mailController.handleSendMail(body.orderId, order.customerId, body.productId, productName, body.action)
 
     }
     catch (e) {

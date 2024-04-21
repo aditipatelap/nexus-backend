@@ -1,7 +1,8 @@
 const nodemailer = require('nodemailer');
 const customerCollection = require('../../models/customerModel');
+const { createInvoiceData } = require('../../invoice/invoiceData');
 
-const handleSendMail = async (customerId, productName, update) => {
+const handleSendMail = async (orderId, customerId, productId, productName, update) => {
     try {
         // Fetch customer details using customerId
         const customer = await customerCollection.findOne({ _id: customerId });
@@ -54,7 +55,7 @@ const handleSendMail = async (customerId, productName, update) => {
                             <div class="email-text">
                                 Congratulations!<br>
                                 Your order with product <strong>${productName}</strong> has been approved and is now out for delivery.<br>
-                                Our delivery agent will be arriving shortly with your package. Upon delivery, you will receive your invoice via e-mail.<br><br>
+                                Our delivery agent will be arriving shortly with your package. Upon delivery, you will receive your invoice.<br><br>
                                 Thank you for shopping with us! We truly appreciate your trust and support.<br><br>
                                 <span class="email-signature">Best regards,<br>Team Nexus</span>
                             </div>
@@ -105,6 +106,13 @@ const handleSendMail = async (customerId, productName, update) => {
                 `
             };
         } else if (update === 'delivered') {
+
+            // Call createInvoiceData.js to generate invoice PDF
+            await createInvoiceData(orderId, productId);
+
+            // Generate invoice PDF
+            const invoicePath = 'D:/NEXUS/nexus-backend/invoice/invoice.pdf';
+            
             mailOptions = {
                 from: 'acode4all@gmail.com',
                 to: mailId,
@@ -146,7 +154,11 @@ const handleSendMail = async (customerId, productName, update) => {
                             </div>
                         </body>
                     </html>
-                `
+                `,
+                attachments: [{
+                    filename: 'invoice.pdf',
+                    path: invoicePath // Path to the generated invoice PDF
+                }]
             };
         }
 
