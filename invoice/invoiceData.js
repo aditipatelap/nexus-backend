@@ -28,7 +28,7 @@ const createInvoiceData = async (orderId, productId) => {
 
     invoice.shipping.name = order.billName;
     invoice.shipping.address = order.billAddress;
-    invoice.items[0].item = product.name.substring(0, 40);
+    invoice.items[0].item = product.name;
     invoice.items[0].amount = parseFloat(product.price);
     invoice.items[0].discount = parseFloat(product.discount);
 
